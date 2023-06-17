@@ -60,3 +60,18 @@ var swiper = new Swiper('.team__swiper', {
   }
 });
 
+// Фиксируем шапку при прокрутке сайта (дропп-даун)
+let header = document.querySelector('.js-header'),
+    headerH = document.querySelector('.js-header').clientHeight;
+
+document.onscroll = function () {
+  let scroll = window.scrollY;
+
+  if (scroll > headerH + 200) {
+    header.classList.add('fixed');
+    document.body.style.paddingTop = headerH + 'px';
+  } else {
+    header.classList.remove('fixed');
+    document.body.removeAttribute('style');
+  }
+}
